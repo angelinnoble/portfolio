@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angelin Noble | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #f0e119; /* Your signature yellow */
+      --dark: #150638;    /* navy */
+      --bg-alt: #1a1a1a;  /* Card background */
+      --text-dim: #a0a0a0;
+    }
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--dark);
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* --- CUSTOM CURSOR --- */
+    .cursor {
+      width: 20px; height: 20px; border: 2px solid var(--primary);
+      border-radius: 50%; position: fixed; pointer-events: none;
+      z-index: 999; transition: transform 0.1s; transform: translate(-50%, -50%);
+    }
+
+    /* --- HERO SECTION (Updated with your styling) --- */
+    .hero-section {
+      height: 100vh; display: flex; justify-content: center;
+      align-items: center; flex-direction: column; background: var(--primary);
+    }
+
+    .name-row {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11vw; font-weight: 800; color: black;
+      line-height: 0.8; letter-spacing: -5px; text-transform: uppercase;
+    }
+
+    .animated-letter {
+      display: inline-block; position: relative; width: 12vw; height: 10vw;
+      background: #efefef; border-radius: 100px; margin: 0 10px; overflow: hidden;
+    }
+
+    .letter-inner {
+      position: absolute; width: 9vw; height: 9vw; background: black;
+      color: #efefef; border-radius: 50%; display: flex;
+      justify-content: center; align-items: center; font-size: 7vw;
+      top: 50%; transform: translateY(-50%);
+      animation: slideLetter 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes slideLetter { 0% { left: 0.5vw; } 100% { left: 2.5vw; } }
+
+    .middle-bar {
+      width: 85%; margin: 30px auto; background: rgb(0, 0, 0);
+      border-radius: 60px; overflow: hidden; padding: 15px 20px;
+    }
+
+    .scroll-text {
+      white-space: nowrap; display: inline-block; color: var(--primary);
+      font-size: 1.5vw; animation: scrollText 20s linear infinite; font-weight: 600;
+    }
+
+    @keyframes scrollText { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+   /* --- MENU SECTION (The Navy Core) --- */
+.menu-section {
+  min-height: 100vh;
+  background: var(--navy-deep); /* Use the navy color we defined */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 5%;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers items horizontally */
+  justify-content: center; /* Centers items vertically */
+  width: 100%;
+}
+
+.menu-item {
+  cursor: pointer;
+  font-size: 8vw;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 15px 0;
+  letter-spacing: -4px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Keeps the word centered when the 'O' expands */
+  gap: 15px;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.02);
+}
+
+.o-track {
+  width: 15vw;
+  height: 7vw;
+  background: rgba(240, 225, 25, 0.05); /* Very subtle yellow glow */
+  border: 1px solid rgba(240, 225, 25, 0.2); /* Defined edge for a premium look */
+  border-radius: 100px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.sliding-o {
+  width: 7vw;
+  height: 7vw;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  animation: slideMenuO 3s infinite alternate ease-in-out;
+}
+
+@keyframes slideMenuO { 
+  0% { left: 0; } 
+  100% { left: 8vw; } 
+}
+
+/* --- CONTACT INTERACTION --- */
+.menu-item.contact-active .o-track { 
+  width: 40vw; 
+  background: var(--primary); 
+  border-color: var(--primary);
+}
+
+.help-text { 
+  color: var(--navy-deep); /* Dark text on the yellow expanded track */
+  font-size: 2.5vw; 
+  font-weight: 600; 
+  width: 100%; 
+  text-align: center; 
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.menu-item.contact-active .help-text { 
+  opacity: 1; 
+}
+
+.menu-item.contact-active .sliding-o { 
+  display: none; 
+}
+
+    /* --- SKILLS & PROJECTS (New Bespoke Sections) --- */
+    .section-title {
+      font-size: 5vw; margin-bottom: 50px; color: var(--primary); text-transform: uppercase;
+    }
+
+    .grid-container {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px; width: 100%; max-width: 1200px; margin: 0 auto;
+    }
+
+    .skill-card {
+      background: var(--bg-alt); padding: 30px; border-radius: 20px;
+      transition: 0.4s; border-left: 5px solid var(--primary);
+    }
+
+    .skill-card:hover { transform: translateY(-10px); background: #252525; }
+
+    .project-card {
+      position: relative; background: #252525; border-radius: 30px;
+      overflow: hidden; min-height: 400px; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 30px;
+    }
+
+    .project-card h3 { font-size: 2vw; margin-bottom: 10px; }
+    .project-card p { color: var(--text-dim); margin-bottom: 20px; }
+
+    /* --- MODALS & DRAWERS --- */
+    .overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(12, 2, 58, 0.95); z-index: 200; display: flex;
+      justify-content: center; align-items: center; visibility: hidden; opacity: 0; transition: 0.5s;
+    }
+    .overlay.active { visibility: visible; opacity: 1; }
+
+    .circle-modal {
+      width: 0; height: 0; background: var(--primary); border-radius: 50%;
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: center; color: black; text-align: center; padding: 40px;
+      transition: 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .overlay.active .circle-modal { width: 70vw; height: 70vw; }
+
+    .portfolio-drawer {
+      position: fixed; bottom: -100%; left: 0; width: 100%; height: 90%;
+      background: #111; z-index: 250; transition: 0.7s;
+      padding: 80px 5%; overflow-y: auto; border-radius: 50px 50px 0 0;
+    }
+    .portfolio-drawer.active { bottom: 0; }
+
+    .close-btn {
+      position: absolute; top: 30px; right: 40px; background: var(--primary);
+      border: none; width: 60px; height: 60px; border-radius: 50%;
+      font-size: 30px; cursor: pointer; font-weight: bold;
+    }
+
+    footer {
+      padding: 100px 5%; background: #000; border-top: 1px solid #333; text-align: center;
+    }
+
+    @media(max-width: 768px) {
+      .name-row { font-size: 14vw; }
+      .scroll-text { font-size: 4vw; }
+      .grid-container { grid-template-columns: 1fr; }
+      .overlay.active .circle-modal { width: 95vw; height: 95vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="name-row">ANG<span class="animated-letter"><span class="letter-inner">E</span></span>LIN</div>
+    <div class="middle-bar">
+      <div class="scroll-text">FULL STACK DEVELOPER • UI/UX DESIGNER • BCA GRADUATE • CREATIVE MIND •</div>
+    </div>
+    <div class="name-row">N<span class="animated-letter"><span class="letter-inner">O</span></span>BLE</div>
+    <p style="color: black; font-weight: 500; margin-top: 20px;">Scroll to Explore</p>
+  </section>
+
+  <!-- NAVIGATION MENU -->
+  <section class="menu-section">
+    <div class="menu-container">
+      <div class="menu-item" onclick="toggleModal('aboutOverlay')">
+        AB<span class="o-track"><span class="sliding-o"></span></span>UT
+      </div>
+      <div class="menu-item" onclick="toggleModal('portDrawer')">
+        W<span class="o-track"><span class="sliding-o"></span></span>RKS
+      </div>
+     
+      <div class="menu-item" id="contactItem" onclick="handleContactClick()">
+        C<span class="o-track">
+          <span class="sliding-o"></span>
+          <span class="help-text">LET'S TALK?</span>
+        </span>NTACT
+      </div>
+    </div>
+  </section>
+<!-- ABOUT MODAL -->
+<div class="overlay" id="aboutOverlay">
+  <!-- Close button stays in the overlay, outside the circle -->
+  <button class="close-btn" onclick="toggleModal('aboutOverlay')">×</button>
+  
+  <div class="circle-modal">
+    <!-- Serif Heading for that 'Classy' look -->
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 3.5vw; letter-spacing: 2px; color: #000; text-transform: uppercase;">
+      Angelin Noble
+    </h2>
+    
+    <!-- Subtle divider -->
+    <div style="width: 60px; height: 3px; background: #000; margin: 20px 0;"></div>
+    
+    <!-- Body Text -->
+    <p style="font-size: 1.2vw; line-height: 1.8; max-width: 85%; font-weight: 400; color: #1a1a1a;">
+     I am Angelin Noble, a motivated BCA graduate with a strong foundation in programming, web development, SQL, and creative digital design. Passionate about building modern and user-focused digital experiences, I specialize in creating responsive, visually appealing, and functional websites that combine creativity with technology.
+
+With a keen interest in frontend development, database management, and UI/UX design, I continuously enhance my technical skills through real-world projects and continuous learning. I enjoy solving problems, developing innovative solutions, and transforming ideas into professional digital products.
+
+As a creative and detail-oriented developer, I am committed to delivering clean, efficient, and impactful work while growing as a full stack developer in the ever-evolving tech industry..
+    </p>
+    
+    <!-- Skills Tagline -->
+    <div style="margin-top: 35px;">
+      <span style="font-size: 0.9vw; letter-spacing: 3px; text-transform: uppercase; font-weight: 800; color: #000; opacity: 0.7;">
+        Python • Django • UI/UX • SQL
+      </span>
+    </div>
+  </div>
+</div>
+
+  <!-- PROJECTS DRAWER -->
+  <div class="portfolio-drawer" id="portDrawer">
+    <button class="close-btn" onclick="toggleModal('portDrawer')">×</button>
+    <h2 class="section-title">Selected Works</h2>
+    <div class="grid-container">
+      <div class="project-card">
+        <h3>The Hungry Palette</h3>
+        <p>Premium Catering Management platform with AI menu generation.</p>
+        <span style="color: var(--primary);">Django • Python • MySQL</span>
+      </div>
+      <div class="project-card">
+        <h3>AI Muse Studio</h3>
+        <p>A culinary tech interface for automated event inspiration.</p>
+        <span style="color: var(--primary);">UI Design • AI Integration</span>
+      </div>
+      
+    </div>
+  </div>
+
+  
+
+  <!-- FOOTER -->
+  <footer>
+    <h2 style="color: var(--primary); font-size: 3vw; margin-bottom: 20px;">Ready to create something bespoke?</h2>
+    <p style="color: var(--text-dim);">angelinnoble@email.com</p>
+    <div style="margin-top: 30px;">
+      <a href="#" style="color: white; margin: 0 15px; text-decoration: none;">LinkedIn</a>
+      <a href="#" style="color: white; margin: 0 15px; text-decoration: none;">GitHub</a>
+    </div>
+    <p style="margin-top: 50px; font-size: 0.8vw; opacity: 0.5;">© 2026 Angelin Noble. Built with Passion.</p>
+  </footer>
+
+  <script>
+    // Custom Cursor Logic
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    function toggleModal(id) {
+      document.getElementById(id).classList.toggle('active');
+    }
+
+    function handleContactClick() {
+      const contact = document.getElementById('contactItem');
+      contact.classList.toggle('contact-active');
+      if(contact.classList.contains('contact-active')) {
+        setTimeout(() => {
+          window.location.href = 'mailto:angelinnoble@example.com';
+        }, 1200);
+      }
+    }
+  </script>
+</body>
+</html>
